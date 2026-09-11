@@ -200,6 +200,35 @@
 
     footer { text-align: center; margin-top: 2.5rem; color: var(--muted); font-size: 0.9rem; }
 
+    /* ---------- Proof-of-work callout ---------- */
+    .pow {
+      max-width: 760px;
+      margin: 0 auto 4rem;
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem 1.75rem;
+      background:
+        radial-gradient(120% 120% at 50% 0%, rgba(41,151,255,0.12), transparent 60%),
+        rgba(28,28,30,0.5);
+      -webkit-backdrop-filter: saturate(160%) blur(16px);
+      backdrop-filter: saturate(160%) blur(16px);
+    }
+    .pow .kicker {
+      font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+      font-size: 0.82rem; color: var(--accent); letter-spacing: 0.08em;
+      text-transform: uppercase; margin-bottom: 0.75rem;
+    }
+    .pow h2 {
+      font-size: clamp(1.5rem, 4vw, 2.1rem); font-weight: 700;
+      letter-spacing: -0.01em; margin-bottom: 0.85rem;
+    }
+    .pow p { color: var(--muted); font-size: 1.08rem; max-width: 620px; margin: 0 auto; }
+    .pow code {
+      background: rgba(255,255,255,0.08); padding: 0.12rem 0.4rem; border-radius: 5px;
+      color: #ff7ab6; font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 0.9em;
+    }
+
     /* ---------- Timeline ---------- */
     .timeline {
       max-width: 760px;
@@ -420,6 +449,17 @@
       <div class="tl-item"><div class="tl-month">Aug 2026</div><div class="tl-text">Handover season — making sure nothing depends on me being here.</div></div>
       <div class="tl-item milestone"><div class="tl-month">Sep 2026</div><div class="tl-text">Won <strong>Hackathon 2026</strong> 🏆 then dropped the mic — signing off with a bang, not a whimper. Grateful for every deploy, every rescue, every one of you. 💥💛 <span class="tl-badge">FAREWELL</span></div></div>
     </div>
+
+    <!-- ============ PROOF OF WORK ============ -->
+    <section class="pow">
+      <div class="kicker">$ git commit -m "proof of work"</div>
+      <h2>To the ones who doubted — thanks for the fuel. 🔥</h2>
+      <p>
+        For everyone who wasn't sure I'd make it: this whole page is the
+        <code>proof-of-work</code>. Not to prove you wrong — just to prove me right.
+        Doubt is a great CI trigger; it kept my builds honest. Onward. 🚀
+      </p>
+    </section>
 
     <!-- ============ TEAMS I SHIPPED ALONGSIDE ============ -->
     <h2 class="section-title">Teams I Shipped Alongside</h2>
