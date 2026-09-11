@@ -186,21 +186,22 @@
     /* ---------- Team groups ---------- */
     .team-nav {
       display: flex; flex-wrap: wrap; gap: 0.55rem; justify-content: center;
-      max-width: 820px; margin: 0 auto 3rem;
+      max-width: 860px; margin: 0 auto 2.5rem;
     }
-    .team-nav a {
-      font-size: 0.85rem; font-weight: 500; text-decoration: none;
+    .team-tab {
+      font-size: 0.9rem; font-weight: 500;
       color: var(--text); background: var(--bg-alt);
       border: 1px solid var(--border); border-radius: 980px;
-      padding: 0.4rem 0.95rem; cursor: pointer;
+      padding: 0.5rem 1.15rem; cursor: pointer;
+      font-family: inherit;
       transition: transform 0.15s ease, border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
     }
-    .team-nav a:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent); }
-    .team-nav a .n {
-      font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
-      font-size: 0.72rem; color: var(--accent); margin-left: 0.35rem;
+    .team-tab:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent); }
+    .team-tab.active {
+      background: var(--accent); color: #fff; border-color: var(--accent);
     }
-    .team-group { margin-bottom: 3rem; scroll-margin-top: 1.5rem; }
+    .team-group { margin-bottom: 1rem; display: none; }
+    .team-group.active { display: block; }
     .team-group h3.team-name {
       font-size: 1.35rem; font-weight: 700; letter-spacing: -0.01em;
       margin-bottom: 1.25rem; padding-bottom: 0.5rem;
@@ -520,40 +521,24 @@
       </p>
     </section>
 
-    <!-- ============ TEAMS I SHIPPED ALONGSIDE ============ -->
-    <h2 class="section-title">Teams I Shipped Alongside</h2>
-    <p class="subhead">
-      Core FC and TSP — the systems that never sleep, and the people who made sure of it.
-      YAML indented, secrets rotated, uptime defended. It was an honour to deploy with you.
-    </p>
-    <div class="tags">
-      <span class="tag">UPI</span>
-      <span class="tag">IMS</span>
-      <span class="tag">KYC</span>
-      <span class="tag">Wallet</span>
-      <span class="tag">Merchant</span>
-      <span class="tag">Jarvis</span>
-      <span class="tag">&amp; many more</span>
+    <!-- ============ TEAMMATES (merged, tabbed) ============ -->
+    <h2 class="section-title" id="team">The Teams I Shipped Alongside</h2>
+    <p class="subhead">Core FC and TSP — the systems that never sleep, and the people who made sure of it. Pick a team to meet the legends behind it.</p>
+
+    <div class="team-nav" role="tablist" aria-label="Select a team">
+      <button class="team-tab active" data-target="team-infra-team" role="tab" aria-selected="true">Infra Team</button>
+      <button class="team-tab" data-target="team-upi-team" role="tab" aria-selected="false">UPI Team</button>
+      <button class="team-tab" data-target="team-merchant-team" role="tab" aria-selected="false">Merchant Team</button>
+      <button class="team-tab" data-target="team-uiw-team" role="tab" aria-selected="false">UIW Team</button>
+      <button class="team-tab" data-target="team-infra-team-it-and-more" role="tab" aria-selected="false">Infra Team (IT &amp; More)</button>
+      <button class="team-tab" data-target="team-qa-team" role="tab" aria-selected="false">QA Team</button>
+      <button class="team-tab" data-target="team-enterprise-team" role="tab" aria-selected="false">Enterprise Team</button>
+      <button class="team-tab" data-target="team-ai-team" role="tab" aria-selected="false">AI Team</button>
+      <button class="team-tab" data-target="team-rsa-team" role="tab" aria-selected="false">RSA Team</button>
+      <button class="team-tab" data-target="team-pa-team" role="tab" aria-selected="false">PA Team</button>
     </div>
 
-    <!-- ============ TEAMMATES ============ -->
-    <h2 class="section-title" id="team">The Legends</h2>
-    <p class="subhead">Grouped by team — every one of you left a mark. A line each, because a page wouldn't fit the gratitude.</p>
-
-    <nav class="team-nav" aria-label="Jump to team">
-      <a href="#team-infra-team">Infra Team<span class="n">23</span></a>
-      <a href="#team-upi-team">UPI Team<span class="n">7</span></a>
-      <a href="#team-merchant-team">Merchant Team<span class="n">13</span></a>
-      <a href="#team-uiw-team">UIW Team<span class="n">6</span></a>
-      <a href="#team-infra-team-it-and-more">Infra Team (IT &amp; More)<span class="n">4</span></a>
-      <a href="#team-qa-team">QA Team<span class="n">7</span></a>
-      <a href="#team-enterprise-team">Enterprise Team<span class="n">8</span></a>
-      <a href="#team-ai-team">AI Team<span class="n">2</span></a>
-      <a href="#team-rsa-team">RSA Team<span class="n">2</span></a>
-      <a href="#team-pa-team">PA Team<span class="n">10</span></a>
-    </nav>
-
-    <div class="team-group" id="team-infra-team">
+    <div class="team-group active" id="team-infra-team">
       <h3 class="team-name">Infra Team <span class="count">23</span></h3>
       <div class="people">
         <div class="person">
@@ -1378,6 +1363,37 @@
         });
       }, { threshold: 0.1 });
       people.forEach(function (p) { io.observe(p); });
+    })();
+
+    // Ensure the default-active team's cards are visible on load
+    (function () {
+      var active = document.querySelector('.team-group.active');
+      if (active) active.querySelectorAll('.person').forEach(function (p) { p.classList.add('visible'); });
+    })();
+    // Team tabs: show only the selected team group
+    (function () {
+      var tabs = document.querySelectorAll('.team-tab');
+      if (!tabs.length) return;
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          var targetId = tab.getAttribute('data-target');
+
+          tabs.forEach(function (t) {
+            var on = t === tab;
+            t.classList.toggle('active', on);
+            t.setAttribute('aria-selected', on ? 'true' : 'false');
+          });
+
+          document.querySelectorAll('.team-group').forEach(function (g) {
+            var show = g.id === targetId;
+            g.classList.toggle('active', show);
+            if (show) {
+              // reveal person cards inside the newly shown group
+              g.querySelectorAll('.person').forEach(function (p) { p.classList.add('visible'); });
+            }
+          });
+        });
+      });
     })();
   </script>
 </body>
