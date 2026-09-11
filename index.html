@@ -7,14 +7,14 @@
   <title>Dev Hall of Fame</title>
   <style>
     :root {
-      --bg: #ffffff;
-      --bg-alt: #f5f5f7;
-      --card: #ffffff;
-      --border: #d2d2d7;
-      --text: #1d1d1f;
-      --muted: #6e6e73;
-      --accent: #0066cc;
-      --accent-hover: #0077ed;
+      --bg: #000000;
+      --bg-alt: #1c1c1e;
+      --card: #1c1c1e;
+      --border: #38383a;
+      --text: #f5f5f7;
+      --muted: #98989d;
+      --accent: #2997ff;
+      --accent-hover: #47a6ff;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -45,7 +45,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(rgba(0,0,0,0.05) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
       background-size: 26px 26px;
       -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 78%);
       mask-image: radial-gradient(ellipse at center, #000 30%, transparent 78%);
@@ -53,8 +53,8 @@
     .blob {
       position: absolute;
       border-radius: 50%;
-      filter: blur(70px);
-      opacity: 0.5;
+      filter: blur(80px);
+      opacity: 0.35;
       will-change: transform;
     }
     .blob-1 {
@@ -117,19 +117,20 @@
 
     /* ---------- Intro ---------- */
     .intro {
-      background: rgba(245,245,247,0.7);
+      background: rgba(28,28,30,0.6);
       -webkit-backdrop-filter: saturate(180%) blur(20px);
       backdrop-filter: saturate(180%) blur(20px);
+      border: 1px solid var(--border);
       border-radius: 18px;
       padding: 2rem 2.25rem;
       margin-bottom: 4rem;
     }
-    .intro p { font-size: 1.1rem; color: #333336; }
+    .intro p { font-size: 1.1rem; color: #d1d1d6; }
     .intro code {
-      background: #e8e8ed;
+      background: rgba(255,255,255,0.08);
       padding: 0.12rem 0.4rem;
       border-radius: 5px;
-      color: #d12f6f;
+      color: #ff7ab6;
       font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
       font-size: 0.88em;
     }
@@ -149,7 +150,7 @@
       gap: 1.5rem;
     }
     .card {
-      background: rgba(255,255,255,0.72);
+      background: rgba(28,28,30,0.6);
       -webkit-backdrop-filter: saturate(180%) blur(20px);
       backdrop-filter: saturate(180%) blur(20px);
       border: 1px solid var(--border);
@@ -160,7 +161,7 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.4s ease;
     }
     .card.visible { opacity: 1; transform: translateY(0); }
-    .card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.5); }
     .avatar {
       width: 56px; height: 56px;
       border-radius: 50%;
@@ -175,7 +176,7 @@
       font-size: 0.8rem;
       font-weight: 500;
       color: var(--accent);
-      background: rgba(0,102,204,0.08);
+      background: rgba(41,151,255,0.14);
       border-radius: 980px;
       padding: 0.15rem 0.8rem;
       margin-bottom: 0.85rem;
@@ -193,11 +194,62 @@
     .contact h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; margin-bottom: 0.6rem; }
     .contact p { color: var(--muted); margin-bottom: 1.75rem; font-size: 1.1rem; }
     .contact code {
-      background: #e8e8ed; padding: 0.12rem 0.4rem; border-radius: 5px;
-      color: #d12f6f; font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 0.9em;
+      background: rgba(255,255,255,0.08); padding: 0.12rem 0.4rem; border-radius: 5px;
+      color: #ff7ab6; font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 0.9em;
     }
 
     footer { text-align: center; margin-top: 2.5rem; color: var(--muted); font-size: 0.9rem; }
+
+    /* ---------- Timeline ---------- */
+    .timeline {
+      max-width: 760px;
+      margin: 0 auto 4rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 7px; top: 6px; bottom: 6px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), rgba(41,151,255,0.15));
+    }
+    .tl-item {
+      position: relative;
+      padding: 0 0 1.15rem 1.5rem;
+      opacity: 0;
+      transform: translateX(-12px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .tl-item.visible { opacity: 1; transform: translateX(0); }
+    .tl-item::before {
+      content: "";
+      position: absolute;
+      left: -1.5rem; top: 6px;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--muted);
+      border: 2px solid var(--bg);
+      transform: translateX(2px);
+    }
+    .tl-item.milestone::before {
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(41,151,255,0.2);
+    }
+    .tl-month {
+      font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+      font-size: 0.82rem; color: var(--accent);
+      letter-spacing: 0.02em;
+    }
+    .tl-item.milestone .tl-month { font-weight: 600; }
+    .tl-text { color: var(--text); font-size: 0.98rem; }
+    .tl-item:not(.milestone) .tl-text { color: var(--muted); }
+    .tl-badge {
+      display: inline-block; margin-left: 0.5rem;
+      font-size: 0.7rem; font-weight: 600;
+      color: var(--accent); background: rgba(41,151,255,0.14);
+      border-radius: 980px; padding: 0.05rem 0.6rem;
+      vertical-align: middle;
+    }
 
     /* ---------- Terminal ---------- */
     .terminal {
@@ -343,6 +395,30 @@
         rollbacks (mostly) unnecessary. Thank you for trusting me with your
         <code>prod</code> and forgiving me for the occasional <code>3 a.m. alert</code>. 🚀
       </p>
+    </div>
+
+    <!-- ============ TIMELINE ============ -->
+    <h2 class="section-title">The Journey — Mar 2025 → Sep 2026</h2>
+    <div class="timeline" id="timeline">
+      <div class="tl-item milestone"><div class="tl-month">Mar 2025</div><div class="tl-text">Joined as an <strong>SRE Intern</strong> — day one, broke the build, learned where the logs live. <span class="tl-badge">START</span></div></div>
+      <div class="tl-item"><div class="tl-month">Apr 2025</div><div class="tl-text">First on-call shadow. Discovered alerts have no respect for weekends.</div></div>
+      <div class="tl-item"><div class="tl-month">May 2025</div><div class="tl-text">Wrote my first real runbook. It actually got used.</div></div>
+      <div class="tl-item"><div class="tl-month">Jun 2025</div><div class="tl-text">Automated a manual deploy step. Reclaimed an hour a week for everyone.</div></div>
+      <div class="tl-item"><div class="tl-month">Jul 2025</div><div class="tl-text">Survived my first big incident — and the postmortem taught me more than any course.</div></div>
+      <div class="tl-item"><div class="tl-month">Aug 2025</div><div class="tl-text">Started owning pipelines end to end. Green builds became a personal mission.</div></div>
+      <div class="tl-item milestone"><div class="tl-month">Sep 2025</div><div class="tl-text">Converted to <strong>DevOps Engineer</strong> 🎉 — trusted with prod, and I didn't take it lightly. <span class="tl-badge">CONVERTED</span></div></div>
+      <div class="tl-item"><div class="tl-month">Oct 2025</div><div class="tl-text">Tightened observability — dashboards that actually answered the 3 a.m. question.</div></div>
+      <div class="tl-item"><div class="tl-month">Nov 2025</div><div class="tl-text">Cut deploy times and rollout risk. Boring deploys, happy team.</div></div>
+      <div class="tl-item"><div class="tl-month">Dec 2025</div><div class="tl-text">Held the fort through the holiday freeze. Quietest pager of the year.</div></div>
+      <div class="tl-item"><div class="tl-month">Jan 2026</div><div class="tl-text">New year, new IaC. Terraformed things that used to be tribal knowledge.</div></div>
+      <div class="tl-item"><div class="tl-month">Feb 2026</div><div class="tl-text">Rotated the secrets nobody remembered existed. Slept better afterward.</div></div>
+      <div class="tl-item"><div class="tl-month">Mar 2026</div><div class="tl-text">One year in. Went from "where are the logs?" to "here's the fix."</div></div>
+      <div class="tl-item"><div class="tl-month">Apr 2026</div><div class="tl-text">Scaled infra for a traffic spike without a single page. Chef's kiss.</div></div>
+      <div class="tl-item"><div class="tl-month">May 2026</div><div class="tl-text">Mentored the new intern — passing on the "break it in staging" wisdom.</div></div>
+      <div class="tl-item"><div class="tl-month">Jun 2026</div><div class="tl-text">Shipped a self-healing setup. The system started fixing itself before I could.</div></div>
+      <div class="tl-item"><div class="tl-month">Jul 2026</div><div class="tl-text">Documented everything. Future-me (and you) will thank present-me.</div></div>
+      <div class="tl-item"><div class="tl-month">Aug 2026</div><div class="tl-text">Handover season — making sure nothing depends on me being here.</div></div>
+      <div class="tl-item milestone"><div class="tl-month">Sep 2026</div><div class="tl-text">Signing off. What a journey — grateful for every deploy, every rescue, every one of you. 💛 <span class="tl-badge">FAREWELL</span></div></div>
     </div>
 
     <!-- ============ TEAMS I SHIPPED ALONGSIDE ============ -->
@@ -547,6 +623,24 @@
       } else {
         run();
       }
+    })();
+    // Timeline scroll reveal
+    (function () {
+      var items = document.querySelectorAll('.tl-item');
+      if (!items.length) return;
+      if (!('IntersectionObserver' in window)) {
+        items.forEach(function (it) { it.classList.add('visible'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      items.forEach(function (it) { io.observe(it); });
     })();
   </script>
 </body>
