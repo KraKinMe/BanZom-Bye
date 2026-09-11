@@ -184,7 +184,23 @@
     .card p { color: var(--muted); font-size: 0.98rem; }
 
     /* ---------- Team groups ---------- */
-    .team-group { margin-bottom: 3rem; }
+    .team-nav {
+      display: flex; flex-wrap: wrap; gap: 0.55rem; justify-content: center;
+      max-width: 820px; margin: 0 auto 3rem;
+    }
+    .team-nav a {
+      font-size: 0.85rem; font-weight: 500; text-decoration: none;
+      color: var(--text); background: var(--bg-alt);
+      border: 1px solid var(--border); border-radius: 980px;
+      padding: 0.4rem 0.95rem; cursor: pointer;
+      transition: transform 0.15s ease, border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+    }
+    .team-nav a:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent); }
+    .team-nav a .n {
+      font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+      font-size: 0.72rem; color: var(--accent); margin-left: 0.35rem;
+    }
+    .team-group { margin-bottom: 3rem; scroll-margin-top: 1.5rem; }
     .team-group h3.team-name {
       font-size: 1.35rem; font-weight: 700; letter-spacing: -0.01em;
       margin-bottom: 1.25rem; padding-bottom: 0.5rem;
@@ -524,7 +540,20 @@
     <h2 class="section-title" id="team">The Legends</h2>
     <p class="subhead">Grouped by team — every one of you left a mark. A line each, because a page wouldn't fit the gratitude.</p>
 
-    <div class="team-group">
+    <nav class="team-nav" aria-label="Jump to team">
+      <a href="#team-infra-team">Infra Team<span class="n">23</span></a>
+      <a href="#team-upi-team">UPI Team<span class="n">7</span></a>
+      <a href="#team-merchant-team">Merchant Team<span class="n">13</span></a>
+      <a href="#team-uiw-team">UIW Team<span class="n">6</span></a>
+      <a href="#team-infra-team-it-and-more">Infra Team (IT &amp; More)<span class="n">4</span></a>
+      <a href="#team-qa-team">QA Team<span class="n">7</span></a>
+      <a href="#team-enterprise-team">Enterprise Team<span class="n">8</span></a>
+      <a href="#team-ai-team">AI Team<span class="n">2</span></a>
+      <a href="#team-rsa-team">RSA Team<span class="n">2</span></a>
+      <a href="#team-pa-team">PA Team<span class="n">10</span></a>
+    </nav>
+
+    <div class="team-group" id="team-infra-team">
       <h3 class="team-name">Infra Team <span class="count">23</span></h3>
       <div class="people">
         <div class="person">
@@ -691,7 +720,7 @@
       </div>
     </div>
 
-    <div class="team-group">
+    <div class="team-group" id="team-upi-team">
       <h3 class="team-name">UPI Team <span class="count">7</span></h3>
       <div class="people">
         <div class="person">
@@ -746,7 +775,7 @@
       </div>
     </div>
 
-    <div class="team-group">
+    <div class="team-group" id="team-merchant-team">
       <h3 class="team-name">Merchant Team <span class="count">13</span></h3>
       <div class="people">
         <div class="person">
@@ -843,7 +872,7 @@
       </div>
     </div>
 
-    <div class="team-group">
+    <div class="team-group" id="team-uiw-team">
       <h3 class="team-name">UIW Team <span class="count">6</span></h3>
       <div class="people">
         <div class="person">
@@ -891,7 +920,7 @@
       </div>
     </div>
 
-    <div class="team-group">
+    <div class="team-group" id="team-infra-team-it-and-more">
       <h3 class="team-name">Infra Team (IT &amp; More) <span class="count">4</span></h3>
       <div class="people">
         <div class="person">
@@ -925,7 +954,7 @@
       </div>
     </div>
 
-    <div class="team-group">
+    <div class="team-group" id="team-qa-team">
       <h3 class="team-name">QA Team <span class="count">7</span></h3>
       <div class="people">
         <div class="person">
@@ -980,7 +1009,7 @@
       </div>
     </div>
 
-    <div class="team-group">
+    <div class="team-group" id="team-enterprise-team">
       <h3 class="team-name">Enterprise Team <span class="count">8</span></h3>
       <div class="people">
         <div class="person">
@@ -1042,7 +1071,7 @@
       </div>
     </div>
 
-    <div class="team-group">
+    <div class="team-group" id="team-ai-team">
       <h3 class="team-name">AI Team <span class="count">2</span></h3>
       <div class="people">
         <div class="person">
@@ -1062,7 +1091,7 @@
       </div>
     </div>
 
-    <div class="team-group">
+    <div class="team-group" id="team-rsa-team">
       <h3 class="team-name">RSA Team <span class="count">2</span></h3>
       <div class="people">
         <div class="person">
@@ -1084,7 +1113,7 @@
 
 
 
-    <div class="team-group">
+    <div class="team-group" id="team-pa-team">
       <h3 class="team-name">PA Team <span class="count">10</span></h3>
       <div class="people">
         <div class="person">
