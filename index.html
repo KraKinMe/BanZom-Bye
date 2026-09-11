@@ -1,9 +1,156 @@
-<html>
-  <head>
-    <title>Banzom Bye</title>
-  </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dev Hall of Fame</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent2: #3fb950;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem 1rem 4rem;
+    }
+    .container { max-width: 960px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 3rem; }
+    header h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    header p { color: var(--muted); font-size: 1.1rem; }
+    .intro {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 3rem;
+    }
+    .intro code {
+      background: #0d1117;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      color: var(--accent2);
+      font-family: "SF Mono", Consolas, monospace;
+      font-size: 0.9em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .card:hover { transform: translateY(-4px); border-color: var(--accent); }
+    .avatar {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; font-weight: 700; color: #0d1117;
+      margin-bottom: 1rem;
+    }
+    .card h3 { font-size: 1.2rem; margin-bottom: 0.25rem; }
+    .award {
+      display: inline-block;
+      font-size: 0.8rem;
+      color: var(--accent2);
+      border: 1px solid var(--accent2);
+      border-radius: 20px;
+      padding: 0.1rem 0.7rem;
+      margin-bottom: 0.75rem;
+    }
+    .card p { color: var(--muted); font-size: 0.95rem; }
+    footer {
+      text-align: center;
+      margin-top: 3.5rem;
+      color: var(--muted);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .signoff { margin-top: 1.5rem; font-size: 1.05rem; color: var(--text); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🏆 Dev Hall of Fame</h1>
+      <p>A small tribute to the people who made the code (and the coffee breaks) worth it.</p>
+    </header>
 
-  <body>
-    <H1>Yo Yo Yo</H1>
-  </body>
+    <!-- ============ EDIT THIS INTRO ============ -->
+    <div class="intro">
+      <p>
+        Today is my last day, and instead of a plain goodbye email, I built this —
+        because <code>git blame</code> should sometimes be <code>git thanks</code>.
+        To this incredible team: thank you for the reviews, the rescues, and the ridiculous
+        Slack threads. Here are a few of you who deserve a permanent commit in my memory.
+      </p>
+    </div>
+
+    <!-- ============ EDIT / DUPLICATE THESE CARDS ============ -->
+    <!-- To add a dev: copy one <div class="card">...</div> block and change the values. -->
+    <div class="grid">
+
+      <div class="card">
+        <div class="avatar">A</div>
+        <h3>Dev Name</h3>
+        <span class="award">Best Debugging Partner</span>
+        <p>Could find a null pointer faster than I could find my keyboard. Thanks for the 2am rescues.</p>
+      </div>
+
+      <div class="card">
+        <div class="avatar">B</div>
+        <h3>Dev Name</h3>
+        <span class="award">King of Merge Conflicts</span>
+        <p>Somehow always on the other side of the conflict — and always right. Respect.</p>
+      </div>
+
+      <div class="card">
+        <div class="avatar">C</div>
+        <h3>Dev Name</h3>
+        <span class="award">Reason I Survived Mondays</span>
+        <p>The memes, the coffee runs, the sanity checks. You carried more than you know.</p>
+      </div>
+
+      <div class="card">
+        <div class="avatar">D</div>
+        <h3>Dev Name</h3>
+        <span class="award">Fastest Hotfix in the West</span>
+        <p>Production went down, and before I opened the alert you'd already shipped the fix.</p>
+      </div>
+
+    </div>
+
+    <!-- ============ EDIT THIS FOOTER ============ -->
+    <footer>
+      <p class="signoff">This isn't goodbye — it's just a <code style="color:var(--accent2)">git push</code> to a new branch. 🚀</p>
+      <p style="margin-top:1rem;">
+        Stay in touch —
+        <a href="mailto:your.email@example.com">Email</a> ·
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">LinkedIn</a>
+      </p>
+      <p style="margin-top:1rem; font-size:0.85rem;">— Your Name</p>
+    </footer>
+  </div>
+</body>
 </html>
